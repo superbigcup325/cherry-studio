@@ -1808,7 +1808,10 @@ const AgentComposerInner = ({
                   onRetryFailed={retryFailedFollowup}
                   onSkipFailed={skipFailedFollowup}
                   onAbortQueue={clearFollowups}
-                  isFailureDraining={failedFollowupId != null && failedFollowupId === drainingFollowupId}
+                  // `drainingFollowupId` resets on remount while the durable claim survives — keep Skip/Retry locked until the retry settles.
+                  isFailureDraining={
+                    failedFollowupId != null && (failedFollowupId === drainingFollowupId || hasLiveFollowupSend())
+                  }
                   isSteerDisabled={(item) => item.id === drainingFollowupId}
                 />
               ) : undefined}
