@@ -168,6 +168,13 @@
       "when": 1789565251208,
       "tag": "0023_warm_slayback",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "6",
+      "when": 1789661628326,
+      "tag": "0024_mixed_kulan_gath",
+      "breakpoints": true
     }
   ],
   "version": "7"
